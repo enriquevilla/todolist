@@ -1,0 +1,25 @@
+#root > div > div {
+    margin: 20px 0;
+}
+
+#root > div > div::after {
+    content: "";
+    display: block;
+    margin: 0 auto;
+    width: 80%;
+    padding-top: 20px;
+    border-bottom: 1px solid black;
+}
+
+#root > div > div > input {
+    margin-left: 30px;
+}
+
+.todo-text {
+    color: white;
+}
+
+#root > div > .last::after {
+    border: none;
+    padding: 0;
+}

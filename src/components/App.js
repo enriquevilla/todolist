@@ -1,12 +1,23 @@
 import React from "react";
-import CheckboxItem from "./CheckboxItem"
+import TodoItem from "./TodoItem/TodoItem";
+import data from "./TodoItem/TodoData";
+
+let mydata = data.map(i => {
+    if (i === data[data.length - 1]) {
+        i.last = true;
+    }
+    return <TodoItem 
+                key={i.id} 
+                text={i.text} 
+                complete={i.complete} 
+                last={i.last}
+    />
+});
 
 let App = () => {
     return (
-        <div>    
-            <CheckboxItem item="Watch tutorials"/>
-            <CheckboxItem item="Start coding"/>
-            <CheckboxItem item="Build a project"/>
+        <div>
+            {mydata}
         </div>
     )
 }
