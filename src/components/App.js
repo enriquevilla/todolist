@@ -6,20 +6,22 @@ let mydata = data.map(i => {
     if (i === data[data.length - 1]) {
         i.last = true;
     }
-    return <TodoItem 
-                key={i.id} 
-                text={i.text} 
-                complete={i.complete} 
-                last={i.last}
+    return <TodoItem
+        key={i.id}
+        text={i.text}
+        complete={i.complete}
+        last={i.last}
     />
 });
 
-let App = () => {
-    return (
-        <div>
-            {mydata}
-        </div>
-    )
+class App extends React.Component {
+    render() {
+        return (
+            <div>
+                {mydata}
+            </div>
+        )
+    }
 }
 
 export default App;
