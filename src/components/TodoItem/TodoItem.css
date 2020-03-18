@@ -16,7 +16,7 @@
 }
 
 .todo-text {
-    color: white;
+    margin-left: 10px;
 }
 
 #root > div > .last::after {
