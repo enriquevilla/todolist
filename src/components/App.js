@@ -8,7 +8,23 @@ class App extends React.Component {
         this.state = {
             todos: data
         }
+        this.handleChange = this.handleChange.bind(this);
     }
+
+    handleChange(id) {
+        this.setState(prevState => {
+            const newTodos = prevState.todos.map(i => {
+                if (i.id === id) {
+                    i.complete = !i.complete;
+                }
+                return i;
+            });
+            return {
+                todos: newTodos
+            }
+        })
+    }
+
     render() {
         const mydata = this.state.todos.map(i => {
             if (i === data[data.length - 1]) {
@@ -16,9 +32,8 @@ class App extends React.Component {
             }
             return <TodoItem
                 key={i.id}
-                text={i.text}
-                complete={i.complete}
-                last={i.last}
+                item={i}
+                handleChange={this.handleChange}
             />
         });
         return (

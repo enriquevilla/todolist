@@ -1,23 +1,17 @@
 import React from "react";
 import "./TodoItem.css";
 
-let handleClick = () => {
-    console.log("Clicked checkbox")
-}
-
 class TodoItem extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            complete: this.props.complete
-        }
-    }
     render () {
         return (
-            <div className={(this.props.last) && "last"}>
-                <input type="checkbox" checked={this.state.complete} onChange={handleClick}/>
+            <div className={(this.props.item.last) && "last"}>
+                <input 
+                    type="checkbox" 
+                    checked={this.props.item.complete}
+                    onChange={() => this.props.handleChange(this.props.item.id)}
+                />
                 <span className="todo-text">
-                    {this.props.text}
+                    {this.props.item.text}
                 </span>
             </div>
         )
