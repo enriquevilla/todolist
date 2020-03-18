@@ -3,6 +3,8 @@ import "./TodoItem.css";
 
 class TodoItem extends React.Component {
     render () {
+        let textClass = "todo-text";
+        textClass += this.props.item.complete ? " complete" : "";
         return (
             <div className={(this.props.item.last) && "last"}>
                 <input 
@@ -10,7 +12,7 @@ class TodoItem extends React.Component {
                     checked={this.props.item.complete}
                     onChange={() => this.props.handleChange(this.props.item.id)}
                 />
-                <span className="todo-text">
+                <span className={textClass}>
                     {this.props.item.text}
                 </span>
             </div>
