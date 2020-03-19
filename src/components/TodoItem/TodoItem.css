@@ -1,8 +1,8 @@
-#root > div > div {
+.todo-container > div {
     margin: 20px 0;
 }
 
-#root > div > div::after {
+.todo-container > div::after {
     content: "";
     display: block;
     margin: 0 auto;
@@ -11,19 +11,26 @@
     border-bottom: 1px solid black;
 }
 
-#root > div > div > input {
+.todo-container > div > input {
     margin-left: 30px;
 }
 
-.todo-text {
-    margin-left: 10px;
+.text {
+    margin-left: 5px;
+    display: inline-flex;
+    width: 80%;
 }
 
-#root > div > .last::after {
+.todo-container > .last::after {
     border: none;
     padding: 0;
 }
 
 .complete {
     text-decoration: line-through;
+    color: gray;
+}
+
+.todos-empty {
+    text-align: center;
 }

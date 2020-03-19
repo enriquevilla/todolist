@@ -3,10 +3,20 @@ body {
     font-family: sans-serif;
 }
 
-#root > div {
+.todo-container {
     width: 20%;
     margin: auto;
     border: darkslategrey 1px solid;
     border-radius: 10px;
     box-shadow: gray 5px 5px 5px;
+}
+
+.input-container {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.button-container {
+    text-align: center;
+    margin-top: 20px;
 }

@@ -6,15 +6,17 @@ class TodoItem extends React.Component {
         let textClass = "todo-text";
         textClass += this.props.item.complete ? " complete" : "";
         return (
-            <div className={(this.props.item.last) && "last"}>
+            <div className={(this.props.item.last) ? "last" : null}>
                 <input 
                     type="checkbox" 
                     checked={this.props.item.complete}
                     onChange={() => this.props.handleChange(this.props.item.id)}
                 />
-                <span className={textClass}>
-                    {this.props.item.text}
-                </span>
+                <div className="text">
+                    <span className={textClass}>
+                        {this.props.item.text}
+                    </span>
+                </div>
             </div>
         )
     }
