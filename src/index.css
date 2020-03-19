@@ -11,6 +11,12 @@ body {
     box-shadow: gray 5px 5px 5px;
 }
 
+@media (min-width: 0px) and (max-width: 330px) {
+    .todo-container {
+        width: 250px;
+    }
+}
+
 .input-container {
     text-align: center;
     margin-top: 20px;

@@ -21,6 +21,12 @@
     width: 220px;
 }
 
+@media (min-width: 0px) and (max-width: 330px) {
+    .text {
+        width: 170px;
+    }
+}
+
 .todo-container > .last::after {
     border: none;
     padding: 0;
