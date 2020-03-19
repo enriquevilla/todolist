@@ -11,11 +11,14 @@ class TodoItem extends React.Component {
                     type="checkbox" 
                     checked={this.props.item.complete}
                     onChange={() => this.props.handleChange(this.props.item.id)}
+                    id={this.props.item.id}
                 />
                 <div className="text">
-                    <span className={textClass}>
+                    <label 
+                        className={textClass} 
+                        htmlFor={this.props.item.id}>
                         {this.props.item.text}
-                    </span>
+                    </label>
                 </div>
             </div>
         )
