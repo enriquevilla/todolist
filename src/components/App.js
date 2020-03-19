@@ -3,10 +3,12 @@ import TodoItem from "./TodoItem/TodoItem";
 import TodoInput from "./TodoInput/TodoInput";
 import TodoButton from "./TodoButton/TodoButton";
 
+// Random ID generator function
 let ID = () => {
     return "_" + Math.random().toString(36).substr(2,9);
 };
 
+// Parse saved list to JSON if exists
 const savedState = JSON.parse(window.localStorage.getItem("todos"));
 let finalState = [];
 if (savedState != null) {
@@ -23,6 +25,7 @@ class App extends React.Component {
         this.handleClick = this.handleClick.bind(this);
     }
 
+    // Handle checkbox toggling
     handleChange(id) {
         this.setState(prevState => {
             const updatedTodos = prevState.todos.map(i => {
@@ -37,6 +40,7 @@ class App extends React.Component {
         })
     }
 
+    // Handle removal of completed items
     handleClick() {
         this.setState(prevState => {
             const todosToComplete = prevState.todos.filter(i => {
@@ -49,6 +53,7 @@ class App extends React.Component {
     }
 
     componentDidMount() {
+        // Key event listener
         document.addEventListener("keydown", (event) => {
             let input = document.querySelector(".input-container > input"); 
             if (event.key === "Backspace") {
@@ -73,9 +78,11 @@ class App extends React.Component {
     }
 
     render() {
+        // Save state to localStorage when rendering
         const savedState = JSON.stringify(this.state.todos);
         window.localStorage.setItem("todos", savedState);
 
+        // Assign true to last item on list (CSS) and create components
         let mydata = this.state.todos.map(i => {
             if (i === this.state.todos[this.state.todos.length - 1]) {
                 i.last = true;
@@ -89,6 +96,7 @@ class App extends React.Component {
             />
         });
 
+        // If no components, this text will be displayed
         if (mydata.length === 0) {
             mydata = 
                 <p className="todos-empty">
@@ -96,6 +104,7 @@ class App extends React.Component {
                 </p>;
         }
 
+        // Render all components
         return (
             <div>
                 <div className="todo-container">
