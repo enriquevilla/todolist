@@ -14,12 +14,12 @@ class TodoItem extends React.Component {
                     id={this.props.item.id}
                 />
                 <div className="text">
-                    <label 
-                        className={textClass} 
-                        htmlFor={this.props.item.id}
-                    >
-                        {this.props.item.text}
-                    </label>
+                        <label 
+                            className={textClass} 
+                            htmlFor={this.props.item.id}
+                        >
+                            {this.props.item.text}
+                        </label>
                 </div>
             </div>
         )

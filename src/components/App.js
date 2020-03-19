@@ -24,6 +24,7 @@ class App extends React.Component {
         this.handleChange = this.handleChange.bind(this);
         this.handleClickClean = this.handleClickClean.bind(this);
         this.handleClickClear = this.handleClickClear.bind(this);
+        this.handleKeyDown = this.handleKeyDown.bind(this);
     }
 
     // Handle checkbox toggling
@@ -62,13 +63,21 @@ class App extends React.Component {
         document.querySelectorAll(".button-container > button")[1].blur();
     }
 
+    // Handle keystrokes on desktop
+    handleKeyDown(event) {
+        let input = document.querySelector(".input-container > input"); 
+        if (event.key === "Backspace") {
+            input.value = input.value.slice(0, -1);
+        } else if (/^[A-Za-z0-9!?.áéíóúñ]$/.test(event.key) || event.key === " "){
+            input.value += event.key;
+        }
+    }
+
     componentDidMount() {
-        // Key event listener
+        // Key event listener and responsive use
+        let input = document.querySelector(".input-container > input"); 
         document.addEventListener("keydown", (event) => {
-            let input = document.querySelector(".input-container > input"); 
-            if (event.key === "Backspace") {
-                input.value = input.value.slice(0, -1);
-            } else if (event.key === "Enter") {
+            if (event.key === "Enter") {
                 const newTodo = {
                     id: ID(),
                     text: input.value,
@@ -81,8 +90,22 @@ class App extends React.Component {
                     }
                 });
                 input.value = "";
-            } else if (/^[A-Za-z0-9!?.áéíóúñ]$/.test(event.key) || event.key === " "){
-                input.value += event.key;
+            }
+        });
+        if (window.innerWidth > 768) {
+            document.addEventListener("keydown", this.handleKeyDown);
+            document.querySelector(".input-container > input").setAttribute("disabled","");
+        } else {
+            document.removeEventListener("keydown", this.handleKeyDown);
+            document.querySelector(".input-container > input").removeAttribute("disabled");
+        }
+        window.addEventListener("resize", (event) => {
+            if (event.target.innerWidth > 768) {
+                document.addEventListener("keydown", this.handleKeyDown);
+                document.querySelector(".input-container > input").setAttribute("disabled","");
+            } else {
+                document.removeEventListener("keydown", this.handleKeyDown);
+                document.querySelector(".input-container > input").removeAttribute("disabled");
             }
         });
     }
