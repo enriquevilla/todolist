@@ -71,6 +71,7 @@ class App extends React.Component {
         } else if (/^[A-Za-z0-9!?.áéíóúñ]$/.test(event.key) || event.key === " "){
             input.value += event.key;
         }
+        input.scrollLeft = input.scrollWidth;
     }
 
     componentDidMount() {
