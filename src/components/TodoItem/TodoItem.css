@@ -34,3 +34,8 @@
 .todos-empty {
     text-align: center;
 }
+
+::selection {
+    color: none;
+    background: none;
+}

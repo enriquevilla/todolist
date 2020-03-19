@@ -1,4 +1,5 @@
 import React from "react";
+import "./TodoButton.css"
 
 class TodoButton extends React.Component {
     constructor() {
@@ -7,8 +8,10 @@ class TodoButton extends React.Component {
     }
     render() {
         return (
-            <button onClick={() => this.props.handleClick()}>
-                Remove completed items
+            <button 
+                onClick={() => this.props.handleClick()}
+            >
+                {this.props.text}
             </button>
         )
     }

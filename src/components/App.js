@@ -22,7 +22,8 @@ class App extends React.Component {
             todos: finalState
         }
         this.handleChange = this.handleChange.bind(this);
-        this.handleClick = this.handleClick.bind(this);
+        this.handleClickClean = this.handleClickClean.bind(this);
+        this.handleClickClear = this.handleClickClear.bind(this);
     }
 
     // Handle checkbox toggling
@@ -41,7 +42,7 @@ class App extends React.Component {
     }
 
     // Handle removal of completed items
-    handleClick() {
+    handleClickClean() {
         this.setState(prevState => {
             const todosToComplete = prevState.todos.filter(i => {
                 return !i.complete;
@@ -49,7 +50,16 @@ class App extends React.Component {
             return {
                 todos: todosToComplete
             }
-        })
+        });
+        document.querySelector(".button-container > button").blur();
+    }
+
+    // Handle removal of all items
+    handleClickClear() {
+        this.setState({
+            todos: []
+        });
+        document.querySelectorAll(".button-container > button")[1].blur();
     }
 
     componentDidMount() {
@@ -58,7 +68,7 @@ class App extends React.Component {
             let input = document.querySelector(".input-container > input"); 
             if (event.key === "Backspace") {
                 input.value = input.value.slice(0, -1);
-            } else if (event.key === "Enter"){
+            } else if (event.key === "Enter") {
                 const newTodo = {
                     id: ID(),
                     text: input.value,
@@ -117,8 +127,13 @@ class App extends React.Component {
                     />
                 </div>
                 <div className="button-container">
-                    <TodoButton 
-                        handleClick={this.handleClick}
+                    <TodoButton
+                        text="Clean"
+                        handleClick={this.handleClickClean}
+                    />
+                    <TodoButton
+                        text="Clear all"
+                        handleClick={this.handleClickClear}
                     />
                 </div>
             </div>

@@ -16,7 +16,8 @@ class TodoItem extends React.Component {
                 <div className="text">
                     <label 
                         className={textClass} 
-                        htmlFor={this.props.item.id}>
+                        htmlFor={this.props.item.id}
+                    >
                         {this.props.item.text}
                     </label>
                 </div>
