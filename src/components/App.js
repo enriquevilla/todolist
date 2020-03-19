@@ -8,12 +8,16 @@ let ID = () => {
 };
 
 const savedState = JSON.parse(window.localStorage.getItem("todos"));
+let finalState = [];
+if (savedState != null) {
+    finalState = savedState;
+}
 
 class App extends React.Component {
     constructor() {
         super();
         this.state = {
-            todos: savedState
+            todos: finalState
         }
         this.handleChange = this.handleChange.bind(this);
         this.handleClick = this.handleClick.bind(this);
