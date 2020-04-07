@@ -1,42 +1,30 @@
-import React from "react";
+import React, { useState } from "react";
 import "./TodoInput.css";
 
-class TodoInput extends React.Component {
-    constructor() {
-        super()
-        this.state = {
-            value: ""
-        }
-        this.handleChange = this.handleChange.bind(this);
-        this.handleEnter = this.handleEnter.bind(this);
+const TodoInput = (props) => {
+    const [value, setValue] = useState("");
+
+    function handleChange(event) {
+        setValue(event.target.value);
     }
 
-    handleChange(event) {
-        this.setState({
-            value: event.target.value
-        });
-    }
-
-    handleEnter(event) {
+    function handleEnter(event) {
         if (event.key === "Enter") {
-            this.setState({
-                value: ""
-            });
+            setValue("");
         }
+        props.eventHandler(event);
     }
 
-    render() {
-        return (
-            <input 
-                type={this.props.type}
-                placeholder={this.props.placeholder}
-                value={this.state.value}
-                onChange={this.handleChange}
-                onKeyDown={this.handleEnter}
-            >
-            </input>
-        )
-    }
+    return (
+        <input 
+            type={props.type}
+            placeholder={props.placeholder}
+            value={value}
+            onChange={handleChange}
+            onKeyDown={handleEnter}
+        >
+        </input>
+    )
 }
 
 export default TodoInput;
